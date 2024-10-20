@@ -1,8 +1,5 @@
 # Makefile for running the frontend
 
-# Variables
-FRONTEND_DIR = frontend
-
 # Phony targets
 .PHONY: all install start stop clean
 
@@ -12,12 +9,12 @@ all: install start
 # Install dependencies for the frontend
 install:
 	@echo "Installing frontend dependencies..."
-	cd $(FRONTEND_DIR) && npm install
+	npm install
 
 # Start the frontend
 start:
 	@echo "Starting frontend..."
-	cd $(FRONTEND_DIR) && npm start
+	npm start
 
 # Stop the frontend
 stop:
@@ -27,8 +24,8 @@ stop:
 # Clean up node_modules and build artifacts
 clean:
 	@echo "Cleaning up..."
-	rm -rf $(FRONTEND_DIR)/node_modules
-	rm -rf $(FRONTEND_DIR)/build
+	rm -rf ./node_modules
+	rm -rf ./build
 
 # Help target
 help:
