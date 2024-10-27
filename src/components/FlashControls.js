@@ -12,6 +12,7 @@ export default function FlashControls({ userInput, onInputChange, onSubmit, onSh
       onSubmit();
     }
   };
+  
 
   return (
     <div className={`flash-controls ${isCorrect ? 'correct' : ''} ${isWrong ? 'wrong' : ''}`}>

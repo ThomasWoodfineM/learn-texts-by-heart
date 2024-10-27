@@ -60,12 +60,12 @@
     border-radius: 8px;
 }
 
-.flash-controls.correct {
+.flash-mode.correct {
     background-color: rgba(0, 128, 0, 0.2);
     animation: flash-green 1s;
 }
 
-.flash-controls.wrong {
+.flash-mode.wrong {
     background-color: rgba(255, 0, 0, 0.2);
     animation: flash-red 1s;
 }
@@ -150,8 +150,7 @@
     .flash-input,
     .flash-submit,
     .show-line-button {
-        width: 100%;
-        margin-bottom: 0.5rem;
+
     }
 
     .flash-feedback {

@@ -1,7 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato&display=swap');
 
+:root {
+    font-size: 16px;
+}
+
+h1, h2, p {
+    margin: 0;
+}
+
 body, html {
-    height: 100%;
+    position:absolute;
+    height: 100vh;
+    width: 100vw;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -15,11 +25,16 @@ body {
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    height: 95vh;
-    width: 95vw;
-    row-gap: 2rem;  
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2rem;
+    row-gap: 1rem;  
+    margin: auto; 
+    max-width: 800px; 
+    justify-content: space-between;  
     display: flex;
     flex-direction: column;
 }
@@ -49,12 +64,25 @@ button:hover {
     background-color: #6b3410;
 }
 
-@media (max-width: 600px) {
-    .container {
-        padding: 1rem;
+@media (max-width: 768px) {
+    :root {
+        font-size: 15px;
     }
-
     h1 {
         font-size: 2rem;
     }
 }
+
+@media (max-width: 300px) {
+    :root {
+        font-size: 14px;
+    }
+}
+
+
+@supports (-webkit-touch-callout: none) {
+    .container {
+      height: -webkit-fill-available; /* Fallback for older iOS versions */
+      height: 100dvh; /* Use dynamic viewport height for newer versions */
+    }
+  }
