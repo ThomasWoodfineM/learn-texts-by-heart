@@ -15,10 +15,20 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleProcess = (text, freq) => {
-    const processed = processText(text, freq);
-    setProcessedText(processed);
+    setIsLoading(true);
     setShowOutput(true);
     setMode('cloze');
+    
+    const processPromise = processText(text, freq);
+    
+    setProcessedText(processPromise);
+    
+    processPromise.then(() => {
+      setIsLoading(false);
+    }).catch((error) => {
+      console.error("Error processing text:", error);
+      setIsLoading(false);
+    });
   };
 
   const handleFlow = (text) => {

@@ -5,7 +5,7 @@ import FlashMode from './FlashMode';
 import FlashControls from './FlashControls';
 import './OutputContainer.css';
 
-function OutputContainer({ processedText, originalText, mode, onReset, frequency, onFrequencyChange, isLoading }) {
+function OutputContainer({ processedText, originalText, mode, onReset, frequency, onFrequencyChange }) {
   const [currentLine, setCurrentLine] = useState('');
   const [userInput, setUserInput] = useState('');
   const [showLine, setShowLine] = useState(true);
@@ -73,12 +73,7 @@ function OutputContainer({ processedText, originalText, mode, onReset, frequency
   return (
     <div id="output-container">
       <div className="text-container">
-        {isLoading ? (
-          <div className="loading-indicator">
-            <div className="spinner"></div>
-            <p>Processing text...</p>
-          </div>
-        ) : mode === 'cloze' ? (
+        {mode === 'cloze' ? (
           <ClozeMode processedText={processedText} />
         ) : mode === 'flow' ? (
           <FlowMode 

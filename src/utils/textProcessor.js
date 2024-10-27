@@ -1,4 +1,4 @@
-export function processText(text, averageFrequency) {
+export async function processText(text, averageFrequency) {
   const words = text.split(/\s+/);
   const processedWords = new Array(words.length);
   const eligibleIndices = words

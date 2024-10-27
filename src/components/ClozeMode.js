@@ -4,11 +4,24 @@ import './ClozeMode.css';
 function ClozeMode({ processedText }) {
   const [inputs, setInputs] = useState({});
   const [words, setWords] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const inputRefs = useRef({});
 
   useEffect(() => {
-    setWords(processedText.split(' '));
-    setInputs({});  // Reset inputs when processedText changes
+    if (processedText instanceof Promise) {
+      processedText.then((text) => {
+        setWords(text.split(' '));
+        setInputs({});
+        setIsLoading(false);
+      }).catch((error) => {
+        console.error("Error processing text:", error);
+        setIsLoading(false);
+      });
+    } else {
+      setWords(processedText.split(' '));
+      setInputs({});
+      setIsLoading(false);
+    }
   }, [processedText]);
 
   const focusNextInput = (currentIndex) => {
@@ -97,6 +110,15 @@ function ClozeMode({ processedText }) {
     }
     return <span className="word-span" key={index}>{word}</span>;
   };
+
+  if (isLoading) {
+    return (
+      <div className="loading-indicator">
+        <div className="spinner"></div>
+        <p>Processing text...</p>
+      </div>
+    );
+  }
 
   return <>{words.map(renderWord)}</>;
 }

@@ -92,19 +92,17 @@
     }
 }
 
-/* Add these styles to the existing OutputContainer.css file */
-
 .loading-indicator {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 200px;
 }
 
 .spinner {
-    border: 4px solid #f0e6d2;
-    border-top: 4px solid #8b4513;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
     border-radius: 50%;
     width: 40px;
     height: 40px;
